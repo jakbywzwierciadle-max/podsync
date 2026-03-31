@@ -16,7 +16,7 @@ COPY --from=builder /usr/bin/yt-dlp /usr/local/bin/youtube-dl
 COPY --from=builder /build/podsync /app/podsync
 COPY config.toml /app/config.toml
 
-# 🔑 Tworzymy katalog na dane
+# Tworzymy katalog dla local storage
 RUN mkdir -p /tmp/podsync && chmod 777 /tmp/podsync
 
 ENTRYPOINT ["/app/podsync"]
