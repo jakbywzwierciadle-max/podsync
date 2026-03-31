@@ -15,19 +15,20 @@ WORKDIR /app
 
 RUN apk --no-cache add ca-certificates python3 py3-pip ffmpeg tzdata libc6-compat deno bash
 
-RUN mkdir -p /tmp/podsync && chmod 777 /tmp/podsync
+# 🔴 KLUCZOWA ZMIANA
+RUN mkdir -p /app/data && chmod 777 /app/data
 
 COPY --from=builder /usr/bin/yt-dlp /usr/local/bin/youtube-dl
 COPY --from=builder /build/podsync /app/podsync
 
 ENTRYPOINT ["/bin/bash", "-c", "\
 echo \"Port = ${PORT:-10080}\" > /app/config.toml && \
-echo \"DownloadPath = \\\"${DOWNLOAD_PATH:-/tmp/podsync}\\\"\" >> /app/config.toml && \
+echo \"DownloadPath = \\\"${DOWNLOAD_PATH:-/app/data}\\\"\" >> /app/config.toml && \
 echo \"MaxParallelDownloads = ${MAX_PARALLEL_DOWNLOADS:-2}\" >> /app/config.toml && \
 echo \"\" >> /app/config.toml && \
 echo \"[Storage]\" >> /app/config.toml && \
 echo \"Type = \\\"local\\\"\" >> /app/config.toml && \
-echo \"DataDir = \\\"${DATA_DIR:-/tmp/podsync}\\\"\" >> /app/config.toml && \
+echo \"DataDir = \\\"${DATA_DIR:-/app/data}\\\"\" >> /app/config.toml && \
 echo \"\" >> /app/config.toml && \
 URLS=${FEED_URLS:-https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ} && \
 IFS=',' read -ra ARR <<< \"$URLS\" && \
