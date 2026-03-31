@@ -1,3 +1,7 @@
 Port = 10080
 DownloadPath = "/tmp/podsync"
 MaxParallelDownloads = 2
+DataDir = "/tmp/podsync"
+
+[[Feeds]]
+Url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
