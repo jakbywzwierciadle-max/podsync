@@ -8,7 +8,7 @@ WORKDIR /build
 # Skopiuj cały kod źródłowy
 COPY . .
 
-# Skopiuj ścieżkę do main.go w podsync
+# Kompilacja podsync
 RUN go build -o podsync ./cmd/podsync
 
 # Pobierz yt-dlp i ustaw uprawnienia
@@ -30,5 +30,9 @@ RUN apk --no-cache add ca-certificates python3 py3-pip ffmpeg tzdata libc6-compa
 COPY --from=builder /usr/bin/yt-dlp /usr/local/bin/youtube-dl
 COPY --from=builder /build/podsync /app/podsync
 
-# Podsync uruchamia się z ENV, więc nie potrzebujemy config.toml
+# Skopiuj config.toml do obrazu
+COPY config.toml /app/config.toml
+
+# Uruchamiaj podsync z config.toml
 ENTRYPOINT ["/app/podsync"]
+CMD ["--config", "/app/config.toml"]
