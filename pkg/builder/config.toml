@@ -1,3 +1,15 @@
-Port = 10080
-DownloadPath = "/tmp/podsync"
-MaxParallelDownloads = 2
+# Podstawowy config dla Podsync
+# bazowany na oryginalnym config.toml.example projektu Podsync
+
+[server]
+port = 8080
+hostname = "https://twoja-appka.onrender.com"
+
+[storage]
+type = "local"
+[storage.local]
+data_dir = "/app/data"
+
+[feeds]
+  [feeds.kanal1]
+  url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
