@@ -33,8 +33,13 @@ COPY --from=builder /build/podsync /app/podsync
 # Tworzymy katalog na pobrane pliki
 RUN mkdir -p /tmp/podsync && chmod 777 /tmp/podsync
 
-# Tworzymy minimalny config.toml
-RUN echo 'Port = 10080\nDownloadPath = "/tmp/podsync"\nMaxParallelDownloads = 2' > /app/config.toml
+# Tworzymy poprawny config.toml
+RUN mkdir -p /app && \
+    cat <<EOF > /app/config.toml
+Port = 10080
+DownloadPath = "/tmp/podsync"
+MaxParallelDownloads = 2
+EOF
 
 # Uruchomienie Podsync
 ENTRYPOINT ["/app/podsync"]
