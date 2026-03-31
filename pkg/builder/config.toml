@@ -1,6 +1,9 @@
 Port = 10000
 DownloadPath = "/tmp/podsync"
 MaxParallelDownloads = 2
+
+[Storage]
+Type = "local"
 DataDir = "/tmp/podsync"
 
 [Feeds.feed1]
