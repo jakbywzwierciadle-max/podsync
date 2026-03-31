@@ -1,9 +1,3 @@
 Port = 10080
 DownloadPath = "/tmp/podsync"
 MaxParallelDownloads = 2
-
-[[Feeds]]
-Name = "moj"
-URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
-Format = "audio"
-UpdatePeriod = "6h"
