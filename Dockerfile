@@ -31,7 +31,7 @@ IFS=',' read -ra ARR <<< \"$URLS\" && \
 i=1 && \
 for url in \"${ARR[@]}\"; do \
   echo \"[Feeds.feed$i]\" >> /app/config.toml && \
-  echo 'Url = \"'$url'\"' >> /app/config.toml && \
+  echo 'URL = \"'$url'\"' >> /app/config.toml && \
   echo '' >> /app/config.toml && \
   i=$((i+1)) ; \
 done && \
