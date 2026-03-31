@@ -3,8 +3,8 @@ FROM golang:1.25 AS builder
 WORKDIR /build
 COPY . .
 
-# build binarki bez make (bardziej przewidywalne)
-RUN go build -o podsync
+# 👇 KLUCZOWA POPRAWKA
+RUN go build -o podsync ./cmd/podsync
 
 # yt-dlp
 RUN wget -O /usr/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp && \
