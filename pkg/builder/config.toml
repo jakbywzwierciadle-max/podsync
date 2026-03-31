@@ -1,0 +1,3 @@
+Port = 10080
+DownloadPath = "/tmp/podsync"
+MaxParallelDownloads = 2
