@@ -21,20 +21,25 @@ COPY --from=builder /usr/bin/yt-dlp /usr/local/bin/youtube-dl
 COPY --from=builder /build/podsync /app/podsync
 
 ENTRYPOINT ["/bin/bash", "-c", "\
-echo 'Port = '${PORT:-10080} > /app/config.toml && \
-echo 'DownloadPath = \"'${DOWNLOAD_PATH:-/tmp/podsync}'\"' >> /app/config.toml && \
-echo 'MaxParallelDownloads = '${MAX_PARALLEL_DOWNLOADS:-2} >> /app/config.toml && \
-echo 'DataDir = \"'${DATA_DIR:-/tmp/podsync}'\"' >> /app/config.toml && \
-echo '' >> /app/config.toml && \
+echo \"Port = ${PORT:-10080}\" > /app/config.toml && \
+echo \"DownloadPath = \\\"${DOWNLOAD_PATH:-/tmp/podsync}\\\"\" >> /app/config.toml && \
+echo \"MaxParallelDownloads = ${MAX_PARALLEL_DOWNLOADS:-2}\" >> /app/config.toml && \
+echo \"\" >> /app/config.toml && \
+echo \"[Storage]\" >> /app/config.toml && \
+echo \"Type = \\\"local\\\"\" >> /app/config.toml && \
+echo \"DataDir = \\\"${DATA_DIR:-/tmp/podsync}\\\"\" >> /app/config.toml && \
+echo \"\" >> /app/config.toml && \
 URLS=${FEED_URLS:-https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ} && \
 IFS=',' read -ra ARR <<< \"$URLS\" && \
 i=1 && \
 for url in \"${ARR[@]}\"; do \
   echo \"[Feeds.feed$i]\" >> /app/config.toml && \
-  echo 'URL = \"'$url'\"' >> /app/config.toml && \
-  echo '' >> /app/config.toml && \
+  echo \"URL = \\\"$url\\\"\" >> /app/config.toml && \
+  echo \"\" >> /app/config.toml && \
   i=$((i+1)) ; \
 done && \
+echo '===== CONFIG =====' && \
 cat /app/config.toml && \
+echo '==================' && \
 /app/podsync --config /app/config.toml \
 "]
