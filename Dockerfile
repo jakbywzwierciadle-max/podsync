@@ -32,14 +32,14 @@ COPY --from=builder /build/podsync /app/podsync
 
 # ENTRYPOINT generuje config.toml z env variables
 ENTRYPOINT ["/bin/bash", "-c", "\
-cat <<EOF > /app/config.toml
-Port = \${PORT:-10080}
-DownloadPath = \${DOWNLOAD_PATH:-/tmp/podsync}
-MaxParallelDownloads = \${MAX_PARALLEL_DOWNLOADS:-2}
-DataDir = \${DATA_DIR:-/tmp/podsync}
+cat > /app/config.toml <<'EOF'
+Port = ${PORT:-10080}
+DownloadPath = ${DOWNLOAD_PATH:-/tmp/podsync}
+MaxParallelDownloads = ${MAX_PARALLEL_DOWNLOADS:-2}
+DataDir = ${DATA_DIR:-/tmp/podsync}
 
 [[Feeds]]
-Url = \"\${FEED_URL}\"
+Url = \"${FEED_URL}\"
 EOF
 /app/podsync --config /app/config.toml
 "]
