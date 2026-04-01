@@ -13,3 +13,4 @@ Folder = "/podsync/media/example"
 Formats = ["mp3"]
 Keep = -1
 AutoSync = true
+
