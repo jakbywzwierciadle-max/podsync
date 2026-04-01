@@ -1,10 +1,9 @@
-# katalog danych Podsync (wymagany)
-DataDir = "/podsync/data"
+# config.toml
+DataDir = "/podsync/data"  # katalog danych, musi istnieć w kontenerze
 
-# pojedynczy podcast / kanał do pobrania
 [[Podcasts]]
-AutoSync = true                       # automatyczne pobieranie nowych odcinków
-Folder = "/podsync/media/example"     # katalog, gdzie będą zapisywane pliki mp3
-Formats = ["mp3"]                      # format do pobrania
-Keep = -1                              # -1 oznacza przechowywanie wszystkich plików
+AutoSync = true
+Folder = "/podsync/media/example"  # podkatalog w wolumenie media
+Formats = ["mp3"]
+Keep = -1
 URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
