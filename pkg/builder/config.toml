@@ -1,10 +1,10 @@
 Port = 10000
 DownloadPath = "/app/data"
 MaxParallelDownloads = 2
-DataDir = "/app/data"
 
 [Storage]
 Type = "local"
+Path = "/app/data"
 
 [Feeds.feed1]
 URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
