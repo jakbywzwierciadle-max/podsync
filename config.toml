@@ -1,24 +1,16 @@
 # config.toml
 Title = "Mój Podsync"
-Host = "0.0.0.0"        # słucha na wszystkich interfejsach, potrzebne dla Railway
-Port = { env = "PORT" }  # Railway ustawia port automatycznie
+Host = "0.0.0.0"
+Port = { env = "PORT" }
 LogLevel = "info"
 
 CachePath = "/podsync/cache"
 TempPath = "/podsync/temp"
 
-# pierwszy feed
+# Feed 1
 [[Feeds]]
-URL = "https://example.com/podcast.rss"
+URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
 Folder = "/podsync/media/example"
 Formats = ["mp3"]
 Keep = -1
-AutoSync = true
-
-# drugi feed
-[[Feeds]]
-URL = "https://anotherpodcast.com/feed.xml"
-Folder = "/podsync/media/another"
-Formats = ["mp3"]
-Keep = 50
 AutoSync = true
