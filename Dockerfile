@@ -1,17 +1,21 @@
-# Dockerfile
-FROM ghcr.io/mxpv/podsync:nightly
+# Pobranie oficjalnego obrazu Go do budowania Podsync
+FROM golang:1.21-alpine AS builder
 
-# Tworzymy katalogi w kontenerze
-RUN mkdir -p /podsync/data /podsync/media/example
+WORKDIR /app
 
-# Kopiujemy plik konfiguracyjny
-COPY config.toml /podsync/config.toml
+# Pobranie najnowszej wersji Podsync (nightly)
+RUN wget https://github.com/mxpv/podsync/releases/download/nightly/podsync-linux-amd64 -O podsync \
+    && chmod +x podsync
 
-# Wolumeny dla danych i mediów (opcjonalnie, ale zalecane)
-VOLUME ["/podsync/data", "/podsync/media"]
-
-# Ustawiamy katalog roboczy
+# Końcowy obraz
+FROM alpine:latest
 WORKDIR /podsync
 
-# Polecenie startowe
-CMD ["./podsync", "-c", "config.toml"]
+# Skopiowanie binarki
+COPY --from=builder /app/podsync /usr/local/bin/podsync
+
+# Kopiowanie configu
+COPY config.toml /podsync/config.toml
+
+# Punkt wejścia
+ENTRYPOINT ["podsync", "-config", "/podsync/config.toml"]
