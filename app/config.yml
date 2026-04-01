@@ -1,26 +1,10 @@
-# Podsync configuration file
-
-# Port, na którym będzie działać serwis
 Port = 10000
-
-# Ścieżka, gdzie będą pobierane pliki
 DownloadPath = "/mnt/data"
-
-# Maksymalna liczba pobrań jednocześnie
 MaxParallelDownloads = 2
 
-# Storage lokalny
 [Storage]
 Type = "local"
 DataDir = "/mnt/data"
 
-# Przykładowa lista feedów
 [Feeds.feed1]
 URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
-# Nazwa feedu w URL dla RSS (opcjonalnie)
-# Name = "moj_feed"
-
-# Możesz dodać kolejne feedy w ten sposób:
-#[Feeds.feed2]
-#URL = "https://www.youtube.com/user/NazwaKonta"
-#Name = "drugi_feed"
