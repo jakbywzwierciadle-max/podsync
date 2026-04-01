@@ -1,9 +1,14 @@
-services:
-  - type: web
-    name: podsync
-    env: docker
-    dockerfilePath: Dockerfile
-    mounts:
-      - type: volume
-        name: podsync-data
-        mountPath: /mnt/data
+# Podsync configuration for local storage
+Port: 10000
+DownloadPath: "/mnt/data"
+MaxParallelDownloads: 2
+
+Storage:
+  Type: "local"
+  DataDir: "/mnt/data"
+
+Feeds:
+  feed1:
+    URL: "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+    Name: "MyYouTubeChannel"  # opcjonalna nazwa kanału
+    Format: "mp3"             # mp3 lub mp4
