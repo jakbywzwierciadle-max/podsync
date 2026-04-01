@@ -1,14 +1,17 @@
 # Dockerfile
 FROM ghcr.io/mxpv/podsync:nightly
 
-# Tworzenie potrzebnych katalogów
-RUN mkdir -p /podsync/media/example /podsync/media/another /podsync/cache /podsync/temp
+# Tworzymy katalogi w kontenerze
+RUN mkdir -p /podsync/data /podsync/media/example
 
-# Kopiowanie configu
+# Kopiujemy plik konfiguracyjny
 COPY config.toml /podsync/config.toml
 
-# Ustawienie katalogu roboczego
+# Wolumeny dla danych i mediów (opcjonalnie, ale zalecane)
+VOLUME ["/podsync/data", "/podsync/media"]
+
+# Ustawiamy katalog roboczy
 WORKDIR /podsync
 
-# Uruchomienie Podsync
-CMD ["podsync", "--config", "config.toml"]
+# Polecenie startowe
+CMD ["./podsync", "-c", "config.toml"]
