@@ -1,10 +1,8 @@
 Port = 10000
-DownloadPath = "/mnt/data"
-MaxParallelDownloads = 2
+DownloadPath = "/tmp"
 
 [Storage]
-Type = "local"
-DataDir = "/mnt/data"
+Type = "memory"
 
 [Feeds.feed1]
 URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
