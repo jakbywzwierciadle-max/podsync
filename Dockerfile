@@ -1,33 +1,30 @@
-# ===== Builder =====
-FROM golang:1.25-alpine AS builder
+# ===== Build =====
+FROM golang:1.25 AS builder
 
 WORKDIR /build
 
-RUN apk add --no-cache git
-
-# Pobierz repo
+RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/mxpv/podsync.git .
 
-# Buduj z właściwego folderu
-RUN go build -o podsync ./cmd/podsync
+WORKDIR /build/cmd/podsync
+RUN go build -o /podsync
 
-# ===== Final =====
+# ===== Runtime =====
 FROM alpine:3.19
 
 WORKDIR /app
 
-# FFmpeg wymagany przez podsync
-RUN apk add --no-cache ffmpeg
+RUN apk add --no-cache ca-certificates ffmpeg tzdata
 
-# Skopiuj binarkę
-COPY --from=builder /build/podsync /app/podsync
+# katalog na dane (Render disk)
+RUN mkdir -p /mnt/data
 
-# Skopiuj config
-COPY config.yml /app/config.yml
+# kopiujemy binarkę
+COPY --from=builder /podsync /app/podsync
 
-# Katalog na dane
-RUN mkdir -p /mnt/data && chmod 777 /mnt/data
+# 🔴 KLUCZ: kopiujemy config
+COPY config.toml /app/config.toml
 
 EXPOSE 10000
 
-CMD ["/app/podsync", "/app/config.yml"]
+CMD ["/app/podsync", "--config", "/app/config.toml"]
