@@ -1,11 +1,11 @@
 # Oficjalny obraz Podsync
 FROM ghcr.io/mxpv/podsync:latest
 
-# Kopiujemy config
+# Kopiujemy konfigurację
 COPY config.toml /podsync/config.toml
 
-# Railway dynamicznie przypisuje port, dlatego CMD używa ENV PORT
+# Railway dynamicznie przypisuje port przez ENV PORT
 ENV PORT 10000
 
-# Uruchomienie Podsync z konfiguracją
-CMD ["podsync", "-c", "/podsync/config.toml", "-p", "${PORT}"]
+# Uruchomienie Podsync – tylko konfiguracja, port bierze z ENV
+CMD ["podsync", "-c", "/podsync/config.toml"]
