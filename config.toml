@@ -1,16 +1,10 @@
-[server]
-port = 10080
+Port = 10000
+DownloadPath = "/mnt/data"
+MaxParallelDownloads = 2
 
-[storage]
-download_path = "/tmp/podsync"
+[Storage]
+Type = "local"
+DataDir = "/mnt/data"
 
-[downloader]
-max_parallel_downloads = 2
-
-[feeds]
-
-  [feeds.mojkanal]
-  url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
-  page_size = 10
-  update_period = "6h"
-  format = "audio"
+[Feeds.feed1]
+URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
