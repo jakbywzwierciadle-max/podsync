@@ -30,10 +30,10 @@ ENTRYPOINT ["/bin/bash", "-c", "\
 echo \"Port = ${PORT:-10000}\" > /app/config.toml && \
 echo \"DownloadPath = \\\"/app/data\\\"\" >> /app/config.toml && \
 echo \"MaxParallelDownloads = 2\" >> /app/config.toml && \
+echo \"DataDir = \\\"/app/data\\\"\" >> /app/config.toml && \
 echo \"\" >> /app/config.toml && \
 echo \"[Storage]\" >> /app/config.toml && \
 echo \"Type = \\\"local\\\"\" >> /app/config.toml && \
-echo \"DataDir = \\\"/app/data\\\"\" >> /app/config.toml && \
 echo \"\" >> /app/config.toml && \
 echo \"[Feeds.feed1]\" >> /app/config.toml && \
 echo \"URL = \\\"https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ\\\"\" >> /app/config.toml && \
