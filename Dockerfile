@@ -15,33 +15,14 @@ WORKDIR /app
 
 RUN apk --no-cache add ca-certificates python3 py3-pip ffmpeg tzdata libc6-compat deno bash
 
-# 🔴 KLUCZOWA ZMIANA
 RUN mkdir -p /app/data && chmod 777 /app/data
 
 COPY --from=builder /usr/bin/yt-dlp /usr/local/bin/youtube-dl
 COPY --from=builder /build/podsync /app/podsync
 
 ENTRYPOINT ["/bin/bash", "-c", "\
-echo \"Port = ${PORT:-10080}\" > /app/config.toml && \
-echo \"DownloadPath = \\\"${DOWNLOAD_PATH:-/app/data}\\\"\" >> /app/config.toml && \
-echo \"MaxParallelDownloads = ${MAX_PARALLEL_DOWNLOADS:-2}\" >> /app/config.toml && \
-echo \"DataDir = \\\"${DATA_DIR:-/app/data}\\\"\" >> /app/config.toml && \
-echo \"\" >> /app/config.toml && \
-echo \"[Storage]\" >> /app/config.toml && \
-echo \"Type = \\\"local\\\"\" >> /app/config.toml && \
-echo \"DataDir = \\\"${DATA_DIR:-/app/data}\\\"\" >> /app/config.toml && \
-echo \"\" >> /app/config.toml && \
-URLS=${FEED_URLS:-https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ} && \
-IFS=',' read -ra ARR <<< \"$URLS\" && \
-i=1 && \
-for url in \"${ARR[@]}\"; do \
-  echo \"[Feeds.feed$i]\" >> /app/config.toml && \
-  echo \"URL = \\\"$url\\\"\" >> /app/config.toml && \
-  echo \"\" >> /app/config.toml && \
-  i=$((i+1)) ; \
-done && \
-echo '===== CONFIG =====' && \
-cat /app/config.toml && \
-echo '==================' && \
-/app/podsync --config /app/config.toml \
+/app/podsync \
+  --port ${PORT:-10080} \
+  --dir ${DATA_DIR:-/app/data} \
+  https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ \
 "]
