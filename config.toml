@@ -1,13 +1,36 @@
-# Podsync konfigurowany pod Railway
-Port = 10000
+# config.toml – Podsync dla Railway
+# =================================================
+# Ustawienia serwera
+Title = "Mój Podsync"
+Port = { env = "PORT" }  # Railway automatycznie ustawia PORT
+Host = "0.0.0.0"         # nasłuch na wszystkich interfejsach
+LogLevel = "info"         # poziom logów
 
-# Ścieżka tymczasowa do pobierania plików (Railway ma tylko ephemeral storage)
-DownloadPath = "/tmp"
+# Opcje cache / temp
+CachePath = "/podsync/cache"
+TempPath = "/podsync/temp"
 
-# Storage w RAM – nie wymaga lokalnego katalogu
-[Storage]
-Type = "memory"
+# Opcje API
+APIPort = 0               # Wyłącz API, jeśli nie potrzebne
+APIHost = "0.0.0.0"
 
-# Twój kanał YouTube
-[Feeds.feed1]
-URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+# Synchronizacja kanałów (przykład)
+[[Feeds]]
+# URL kanału RSS/Podcast
+URL = "https://example.com/podcast.rss"
+# Folder docelowy dla tego feedu
+Folder = "/podsync/media/example"
+# Formaty do pobrania (mp3, m4a, ogg)
+Formats = ["mp3"]
+# Czy włączyć automatyczną synchronizację
+AutoSync = true
+# Ile odcinków trzymać w cache (-1 = wszystkie)
+Keep = -1
+
+# Kolejny feed
+[[Feeds]]
+URL = "https://anotherpodcast.com/feed.xml"
+Folder = "/podsync/media/another"
+Formats = ["mp3"]
+AutoSync = true
+Keep = 50
