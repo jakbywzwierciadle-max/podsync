@@ -1,6 +1,10 @@
+# katalog danych Podsync (wymagany)
+DataDir = "/podsync/data"
+
+# pojedynczy podcast / kanał do pobrania
 [[Podcasts]]
-AutoSync = true
-Folder = "/podsync/media/example"
-Formats = ["mp3"]
-Keep = -1
+AutoSync = true                       # automatyczne pobieranie nowych odcinków
+Folder = "/podsync/media/example"     # katalog, gdzie będą zapisywane pliki mp3
+Formats = ["mp3"]                      # format do pobrania
+Keep = -1                              # -1 oznacza przechowywanie wszystkich plików
 URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
