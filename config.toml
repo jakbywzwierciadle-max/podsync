@@ -1,8 +1,13 @@
+# Port musi być zgodny z Railway ENV PORT, ale tu ustawiamy 10000 jako domyślny
 Port = 10000
+
+# Ścieżka tymczasowa do pobierania plików
 DownloadPath = "/tmp"
 
+# Globalny storage w RAM (Railway nie ma trwałego dysku)
 [Storage]
 Type = "memory"
 
+# Twój feed YouTube
 [Feeds.feed1]
 URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
