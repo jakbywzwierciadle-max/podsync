@@ -1,16 +1,6 @@
-# config.toml
-Title = "Mój Podsync"
-Host = "0.0.0.0"
-Port = { env = "PORT" }
-LogLevel = "info"
-
-CachePath = "/podsync/cache"
-TempPath = "/podsync/temp"
-
-[[Feeds]]
-URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+[[Podcasts]]
+AutoSync = true
 Folder = "/podsync/media/example"
 Formats = ["mp3"]
 Keep = -1
-AutoSync = true
-
+URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
