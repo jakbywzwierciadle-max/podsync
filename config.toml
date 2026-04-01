@@ -7,7 +7,6 @@ LogLevel = "info"
 CachePath = "/podsync/cache"
 TempPath = "/podsync/temp"
 
-# Feed 1
 [[Feeds]]
 URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
 Folder = "/podsync/media/example"
