@@ -25,6 +25,7 @@ ENTRYPOINT ["/bin/bash", "-c", "\
 echo \"Port = ${PORT:-10080}\" > /app/config.toml && \
 echo \"DownloadPath = \\\"${DOWNLOAD_PATH:-/app/data}\\\"\" >> /app/config.toml && \
 echo \"MaxParallelDownloads = ${MAX_PARALLEL_DOWNLOADS:-2}\" >> /app/config.toml && \
+echo \"DataDir = \\\"${DATA_DIR:-/app/data}\\\"\" >> /app/config.toml && \
 echo \"\" >> /app/config.toml && \
 echo \"[Storage]\" >> /app/config.toml && \
 echo \"Type = \\\"local\\\"\" >> /app/config.toml && \
