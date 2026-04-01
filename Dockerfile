@@ -1,11 +1,14 @@
-# Oficjalny obraz Podsync
-FROM ghcr.io/mxpv/podsync:latest
+# Dockerfile
+FROM ghcr.io/mxpv/podsync:nightly
 
-# Kopiujemy konfigurację
+# Tworzenie potrzebnych katalogów
+RUN mkdir -p /podsync/media/example /podsync/media/another /podsync/cache /podsync/temp
+
+# Kopiowanie configu
 COPY config.toml /podsync/config.toml
 
-# Railway dynamicznie przypisuje port przez ENV PORT
-ENV PORT 10000
+# Ustawienie katalogu roboczego
+WORKDIR /podsync
 
-# Uruchomienie Podsync – tylko konfiguracja, port bierze z ENV
-CMD ["podsync", "-c", "/podsync/config.toml"]
+# Uruchomienie Podsync
+CMD ["podsync", "--config", "config.toml"]
