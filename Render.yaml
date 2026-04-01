@@ -3,7 +3,6 @@ services:
     name: podsync
     env: docker
     dockerfilePath: Dockerfile
-    plan: free
     mounts:
       - type: volume
         name: podsync-data
