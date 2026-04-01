@@ -1,9 +1,12 @@
 # config.toml
-DataDir = "/podsync/data"  # katalog danych, musi istnieć w kontenerze
 
-[[Podcasts]]
-AutoSync = true
-Folder = "/podsync/media/example"  # podkatalog w wolumenie media
+# katalog danych do zapisywania historii i metadanych
+DataDir = "/podsync/data"
+
+# pojedynczy kanał YouTube
+[[Feeds]]
+URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+Folder = "/podsync/media/example"
 Formats = ["mp3"]
 Keep = -1
-URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+AutoSync = true
