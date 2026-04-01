@@ -29,4 +29,17 @@ RUN chmod +x /app/podsync
 
 EXPOSE 10000
 
-CMD ["/app/podsync", "--config", "/app/config.toml"]
+CMD ["/bin/sh", "-c", "\
+echo 'Port = 10000' > /app/config.toml && \
+echo 'DownloadPath = \"/tmp\"' >> /app/config.toml && \
+echo '' >> /app/config.toml && \
+echo '[Storage]' >> /app/config.toml && \
+echo 'Type = \"memory\"' >> /app/config.toml && \
+echo '' >> /app/config.toml && \
+echo '[Feeds.feed1]' >> /app/config.toml && \
+echo 'URL = \"https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ\"' >> /app/config.toml && \
+echo '===== CONFIG =====' && \
+cat /app/config.toml && \
+echo '==================' && \
+/app/podsync --config /app/config.toml \
+"]
