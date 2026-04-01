@@ -1,42 +1,15 @@
-# ===== Builder Stage =====
-FROM golang:1.25-alpine AS builder
-
-# Zainstaluj potrzebne narzędzia
-RUN apk add --no-cache git
-
-# Ustaw katalog roboczy
+# ===== Builder =====
+FROM golang:1.21-alpine AS builder
 WORKDIR /build
-
-# Pobierz repozytorium Podsync
+RUN apk add --no-cache git
 RUN git clone https://github.com/mxpv/podsync.git .
+RUN go build -o podsync
 
-# Buduj binarkę Podsync z właściwego folderu
-RUN go build -o podsync ./cmd/podsync
-
-# ===== Final Stage =====
-FROM alpine:3.19
-
-# Zainstaluj ffmpeg (potrzebne do konwersji audio/video)
-RUN apk add --no-cache ffmpeg
-
-# Utwórz katalog aplikacji i danych
+# ===== Final =====
+FROM alpine:3.18
 WORKDIR /app
+COPY --from=builder /build/podsync /app/podsync
+COPY config.yml /app/config.yml
 RUN mkdir -p /mnt/data
-
-# Skopiuj binarkę z buildera
-COPY --from=builder /build/podsync .
-
-# Skopiuj domyślną konfigurację (jeśli masz gotowy plik)
-# COPY config.yml /app/config.yml
-
-# Ustawienie zmiennych środowiskowych dla Render
-ENV DOWNLOAD_PATH=/mnt/data
-ENV DATA_DIR=/mnt/data
-ENV PORT=10000
-ENV MAX_PARALLEL_DOWNLOADS=2
-
-# Otwórz port
 EXPOSE 10000
-
-# Uruchom Podsync
-CMD ["./podsync", "-c", "/app/config.yml"]
+CMD ["/app/podsync", "/app/config.yml"]
