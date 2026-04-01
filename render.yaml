@@ -1,0 +1,16 @@
+# 
+services:
+  - type: web
+    name: podsync
+    env: docker
+    dockerfilePath: ./Dockerfile
+    port: 10000
+    plan: free
+    autoDeploy: true
+    persistentDisk:
+      mountPath: /mnt/data
+      sizeGB: 5
+    environment:
+      # nie trzeba nic tu dodatkowo, bo CMD Dockerfile wskazuje config.yml
+      # ale jeśli chcesz, możesz np. zmienić URL feedu:
+      FEED_URL: "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
