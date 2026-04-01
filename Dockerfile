@@ -1,23 +1,26 @@
-FROM golang:1.25 AS builder
+# ===== Builder =====
+FROM golang:1.25-alpine AS builder
 
 WORKDIR /build
-COPY . .
 
-RUN go build -o podsync ./cmd/podsync
+# Pobierz kod Podsync
+RUN apk add --no-cache git
+RUN git clone https://github.com/mxpv/podsync.git .
+RUN go build -o podsync
 
-RUN wget -O /usr/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp \
-    && chmod a+rwx /usr/bin/yt-dlp
-
-FROM alpine:3.22
+# ===== Final =====
+FROM alpine:3.19
 
 WORKDIR /app
 
-RUN apk --no-cache add ca-certificates python3 py3-pip ffmpeg tzdata libc6-compat bash \
-    && mkdir -p /mnt/data \
-    && chmod 777 /mnt/data
-
+# Skopiuj binarkę z buildera
 COPY --from=builder /build/podsync /app/podsync
-COPY config.toml /app/config.toml
-COPY --from=builder /usr/bin/yt-dlp /usr/local/bin/yt-dlp
 
+# Utwórz katalog na dane
+RUN mkdir -p /mnt/data && chmod 777 /mnt/data
+
+# Skopiuj konfigurację
+COPY config.toml /app/config.toml
+
+# Uruchom Podsync
 CMD ["/app/podsync", "--config", "/app/config.toml"]
