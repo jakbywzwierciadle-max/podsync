@@ -8,14 +8,3 @@ services:
       - type: volume
         name: podsync-data
         mountPath: /mnt/data
-    envVars:
-      - key: PORT
-        value: "10080"
-      - key: DOWNLOAD_PATH
-        value: "/mnt/data"
-      - key: DATA_DIR
-        value: "/mnt/data"
-      - key: MAX_PARALLEL_DOWNLOADS
-        value: "2"
-      - key: FEED_URLS
-        value: "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
