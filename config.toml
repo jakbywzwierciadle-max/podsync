@@ -1,13 +1,13 @@
-# Port musi być zgodny z Railway ENV PORT, ale tu ustawiamy 10000 jako domyślny
+# Podsync konfigurowany pod Railway
 Port = 10000
 
-# Ścieżka tymczasowa do pobierania plików
+# Ścieżka tymczasowa do pobierania plików (Railway ma tylko ephemeral storage)
 DownloadPath = "/tmp"
 
-# Globalny storage w RAM (Railway nie ma trwałego dysku)
+# Storage w RAM – nie wymaga lokalnego katalogu
 [Storage]
 Type = "memory"
 
-# Twój feed YouTube
+# Twój kanał YouTube
 [Feeds.feed1]
 URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
