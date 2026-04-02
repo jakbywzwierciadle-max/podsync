@@ -1,4 +1,4 @@
-FROM ghcr.io/mxpv/podsync:v1.12.0
+FROM ghcr.io/mxpv/podsync:v2.8.0
 
 WORKDIR /app
 COPY config.toml /app/config.toml
