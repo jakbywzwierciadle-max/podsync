@@ -1,5 +1,5 @@
 # Używamy stabilnego obrazu Podsync z Docker Hub
-FROM mxpv/podsync:latest
+FROM mxpv/podsync:nightly
 
 # Ustawiamy katalog roboczy
 WORKDIR /app
