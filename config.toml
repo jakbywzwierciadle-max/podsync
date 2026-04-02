@@ -3,10 +3,10 @@ port = 8080
 data_dir = "/app/data"
 
 [tokens]
-youtube = "TWÓJ_TOKEN_YOUTUBE"
+youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
 
 [[feeds]]
-url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
 update_period = "1h"
 quality = "high"
 format = "audio"
