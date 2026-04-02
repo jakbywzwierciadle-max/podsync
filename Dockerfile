@@ -1,11 +1,7 @@
-# Pobiera oficjalny obraz Podsync
-FROM ghcr.io/mxpv/podsync:latest
+FROM mxpv/podsync:latest
 
-# Kopiuje konfigurację
+# kopiujemy config do kontenera
 COPY config.toml /app/config.toml
 
-# Ustawienie katalogu pracy
-WORKDIR /app
-
-# Domyślna komenda startowa
-CMD ["podsync", "--config", "/app/config.toml"]
+# ustawiamy ścieżkę do configu (dla pewności)
+ENV PODSYNC_CONFIG=/app/config.toml
