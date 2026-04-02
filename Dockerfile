@@ -1,6 +1,7 @@
-FROM ghcr.io/mxpv/podsync:v1.12.0
+FROM tdeutsch/podsync:latest
+
 WORKDIR /app
-COPY config.toml .
+COPY config.toml /app/config.toml
 ENV PODSYNC_CONFIG=/app/config.toml
 EXPOSE 8080
 CMD ["podsync"]
