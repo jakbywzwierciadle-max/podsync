@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN echo "=== CONFIG ===" && cat config.toml
+RUN echo "========== CONFIG ==========" && cat config.toml && echo "============================"
 
 ENV PODSYNC_CONFIG=/app/config.toml
