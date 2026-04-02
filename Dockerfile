@@ -37,6 +37,9 @@ COPY html/ /app/html/
 
 WORKDIR /app
 
+COPY config.toml /app/config.toml
+ENV PODSYNC_CONFIG=/app/config.toml
+
 EXPOSE 8080
 
 ENTRYPOINT ["/usr/local/bin/podsync"]
