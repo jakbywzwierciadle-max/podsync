@@ -1,7 +1,9 @@
+# Konfiguracja serwera
 [server]
 port = 8080
 data_dir = "/app/data"
 
+# Kanał YouTube, który chcemy śledzić
 [[feeds]]
 url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
 format = "audio"
