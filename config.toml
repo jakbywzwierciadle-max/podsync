@@ -1,8 +1,12 @@
 [server]
 port = 8080
-data_dir = "/app/data"
 
-[[feeds]]
-url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
-format = "audio"
-quality = "high"
+[storage]
+  [storage.local]
+  data_dir = "/app/data"
+
+[feeds]
+  [feeds.ID1]
+  url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+  format = "audio"
+  quality = "high"
