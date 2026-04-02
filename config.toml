@@ -6,7 +6,7 @@ data_dir = "/app/data"
 youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
 
 [[feeds]]
-URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
 update_period = "1h"
 quality = "high"
 format = "audio"
