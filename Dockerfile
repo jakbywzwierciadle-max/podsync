@@ -1,9 +1,3 @@
-FROM ghcr.io/mxpv/podsync:latest
-
-WORKDIR /app
-
-COPY . .
-
-RUN echo "========== CONFIG ==========" && cat config.toml && echo "============================"
-
+FROM mxpv/podsync:latest
+COPY config.toml /app/config.toml
 ENV PODSYNC_CONFIG=/app/config.toml
