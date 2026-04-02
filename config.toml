@@ -4,3 +4,7 @@ data_dir = "/app/data"
 
 [[feeds]]
 url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+format = "audio"
+quality = "high"
+update_period = "1h"
+title_template = "{title}"
