@@ -1,12 +1,12 @@
-# config.toml
+[server]
+port = 8080
+data_dir = "/app/data"
 
-# katalog danych do zapisywania historii i metadanych
-DataDir = "/podsync/data"
+[tokens]
+youtube = "TWÓJ_TOKEN_YOUTUBE"
 
-# pojedynczy kanał YouTube
-[[Feeds]]
-URL = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
-Folder = "/podsync/media/example"
-Formats = ["mp3"]
-Keep = -1
-AutoSync = true
+[[feeds]]
+url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+update_period = "1h"
+quality = "high"
+format = "audio"
