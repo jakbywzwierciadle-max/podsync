@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: podsync
-    env: docker
-    dockerfilePath: ./Dockerfile
-    port: 10000
-    persistentDisk:
-      mountPath: /mnt/data
-      sizeGB: 5
