@@ -1,5 +1,5 @@
 [server]
-hostname = "podsync-production.up.railway.app"
+hostname = "https://podsync-production.up.railway.app"
 port = 8080
 
 [storage]
