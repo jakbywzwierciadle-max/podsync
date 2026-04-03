@@ -47,23 +47,3 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   min_duration = "3m"
   filename_template = "{published_at} - {title}.{ext}"
 
- 
-
-
-
-
-
-
-url = "https://www.youtube.com/channel/UCVJzjegbx4UcuYROK7m0KVQ/videos?view=0&sort=dd&live_view=501"
-title = "Bez Doktryny"
-format = "audio"
-quality = "high"
-update_period = "1h"
-max_episodes = 1
-download_videos = false
-cleanup = "all"
-filename_template = "{published_at} - {title}.{ext}"
-
-[feeds.ID3.match]
-min_duration = "3m"
-
