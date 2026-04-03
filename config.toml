@@ -46,6 +46,3 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   cleanup = "old"
   min_duration = "3m"
   filename_template = "{published_at} - {title}.{ext}"
-
-  [feeds.ID3.match]
-  min_duration = "3m"
