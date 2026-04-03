@@ -19,4 +19,4 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   update_period = "6h"
   max_episodes = 50
   download_videos = false
-  clean = true
+  cleanup = "old"
