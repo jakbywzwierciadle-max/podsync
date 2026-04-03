@@ -19,3 +19,14 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   download_videos = false
   cleanup = "old"
   filename_template = "{published_at} - {title}.{ext}"
+
+  [feeds.ID2]
+  url = "https://www.youtube.com/channel/UC4uWtFsAryV2p_UDvu0rraA"
+  title = "Rymanowski Live"
+  format = "audio"
+  quality = "high"
+  update_period = "1h"
+  max_episodes = 20
+  download_videos = false
+  cleanup = "old"
+  filename_template = "{published_at} - {title}.{ext}"
