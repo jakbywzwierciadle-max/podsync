@@ -18,3 +18,4 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   max_episodes = 50
   download_videos = false
   cleanup = "old"
+  filename_template = "{published_at} - {title}.{ext}"
