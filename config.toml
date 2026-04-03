@@ -11,38 +11,59 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
 
 [feeds]
   [feeds.ID1]
-  url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
+  url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ/videos?view=0&sort=dd&live_view=501"
   title = "Spiżarnia wiary"
   format = "audio"
-  quality = "high"
+  quality = "low"
   update_period = "1h"
-  max_episodes = 3
+  max_episodes = 2
   download_videos = false
-  cleanup = "old"
+  cleanup = "all"
   filename_template = "{published_at} - {title}.{ext}"
 
   [feeds.ID2]
-  url = "https://www.youtube.com/channel/UC4uWtFsAryV2p_UDvu0rraA"
+  url = "https://www.youtube.com/channel/UC4uWtFsAryV2p_UDvu0rraA/videos?view=0&sort=dd&live_view=501"
   title = "Rymanowski Live"
   format = "audio"
-  quality = "high"
+  quality = "low"
   update_period = "1h"
-  max_episodes = 3
+  max_episodes = 2
   download_videos = false
-  cleanup = "old"
+  cleanup = "all"
   filename_template = "{published_at} - {title}.{ext}"
 
   [feeds.ID2.match]
   min_duration = "3m"
 
   [feeds.ID3]
-  url = "https://www.youtube.com/channel/UCVJzjegbx4UcuYROK7m0KVQ"
+  url = "https://www.youtube.com/channel/UCVJzjegbx4UcuYROK7m0KVQ/videos?view=0&sort=dd&live_view=501"
   title = "Bez doktryny"
   format = "audio"
-  quality = "high"
+  quality = "low"
   update_period = "1h"
-  max_episodes = 3
+  max_episodes = 2
   download_videos = false
-  cleanup = "old"
+  cleanup = "all"
   min_duration = "3m"
   filename_template = "{published_at} - {title}.{ext}"
+
+ 
+
+
+
+
+
+
+url = "https://www.youtube.com/channel/UCVJzjegbx4UcuYROK7m0KVQ/videos?view=0&sort=dd&live_view=501"
+title = "Bez Doktryny"
+format = "audio"
+quality = "high"
+update_period = "1h"
+max_episodes = 1
+download_videos = false
+cleanup = "all"
+filename_template = "{published_at} - {title}.{ext}"
+
+[feeds.ID3.match]
+min_duration = "3m"
+
