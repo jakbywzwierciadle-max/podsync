@@ -1,9 +1,6 @@
 [server]
 port = 8080
 
-[downloader]
-custom_binary = "/usr/local/bin/yt-dlp"
-
 [storage]
   [storage.local]
   data_dir = "/app/data"
