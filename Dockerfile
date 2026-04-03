@@ -1,17 +1,27 @@
+# --- BUILD STAGE ---
+FROM golang:1.22-alpine AS builder
+
+RUN apk add --no-cache git
+
+WORKDIR /build
+
+# clone repo
+RUN git clone https://github.com/mxpv/podsync.git .
+
+# build binary
+RUN go build -o podsync
+
+# --- RUNTIME STAGE ---
 FROM alpine:3.19
 
-RUN apk add --no-cache ca-certificates tzdata wget
+RUN apk add --no-cache ca-certificates tzdata
 
 WORKDIR /app
 
-# poprawna nazwa pliku (z v2.x)
-RUN wget -O podsync.tar.gz \
-    https://github.com/mxpv/podsync/releases/latest/download/podsync_Linux_x86_64.tar.gz
+# copy binary from builder
+COPY --from=builder /build/podsync /app/podsync
 
-RUN tar -xzf podsync.tar.gz && \
-    mv podsync /app/podsync && \
-    chmod +x /app/podsync && \
-    rm podsync.tar.gz
+RUN chmod +x /app/podsync
 
 RUN mkdir -p /data
 
