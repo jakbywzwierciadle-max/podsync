@@ -9,7 +9,7 @@ port = 8080
 youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
 
 [feeds]
-  [feeds.ID1]
+  [feeds.SW]
   url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
   title = "Spiżarnia wiary"
   format = "audio"
