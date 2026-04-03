@@ -1,32 +1,16 @@
-# --- BUILD ---
-FROM golang:1.25-alpine AS builder
+FROM ghcr.io/mxpv/podsync:latest
 
-RUN apk add --no-cache git
+# Utwórz katalog na konfigurację
+RUN mkdir -p /app
 
-WORKDIR /build
+# Skopiuj config.toml z repo do obrazu
+COPY config.toml /app/config.toml
 
-RUN git clone https://github.com/mxpv/podsync.git .
+# Skopiuj katalog data (jeśli istnieje)
+COPY data /app/data
 
-# 🔥 KLUCZOWA ZMIANA
-WORKDIR /build/cmd/podsync
-
-RUN go build -o /build/podsync
-
-# --- RUNTIME ---
-FROM alpine:3.19
-
-RUN apk add --no-cache ca-certificates tzdata
-
+# Ustaw katalog roboczy
 WORKDIR /app
 
-COPY --from=builder /build/podsync /app/podsync
-
-RUN chmod +x /app/podsync
-
-RUN mkdir -p /data
-
-ENV CONFIG_PATH=/data/config.toml
-
-EXPOSE 8080
-
-CMD ["./podsync"]
+# Domyślna komenda startowa
+CMD ["podsync", "--config", "/app/config.toml"]
