@@ -26,12 +26,8 @@ RUN apk add --no-cache \
     ca-certificates \
     ffmpeg \
     python3 \
-    py3-pip \
     tzdata \
-    && pip3 install --no-cache-dir --break-system-packages yt-dlp \
-    && echo '#!/bin/sh' > /usr/local/bin/youtube-dl \
-    && echo 'exec /usr/local/bin/yt-dlp "$@"' >> /usr/local/bin/youtube-dl \
-    && chmod +x /usr/local/bin/youtube-dl
+    youtube-dl
 
 COPY --from=builder /build/podsync /usr/local/bin/podsync
 COPY html/ /app/html/
