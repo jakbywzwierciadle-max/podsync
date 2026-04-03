@@ -28,8 +28,7 @@ RUN apk add --no-cache \
     python3 \
     py3-pip \
     tzdata \
-    && pip3 install --no-cache-dir --break-system-packages yt-dlp \
-    && ln -s /usr/local/bin/yt-dlp /usr/local/bin/youtube-dl
+    && pip3 install --no-cache-dir --break-system-packages yt-dlp
 
 COPY --from=builder /build/podsync /usr/local/bin/podsync
 COPY html/ /app/html/
