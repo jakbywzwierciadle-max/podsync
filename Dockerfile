@@ -1,13 +1,7 @@
 FROM ghcr.io/mxpv/podsync:latest
 
-# Utwórz katalog na konfigurację
-RUN mkdir -p /app
+RUN mkdir -p /etc/podsync
 
-# Skopiuj config.toml z repo do obrazu
-COPY config.toml /app/config.toml
+COPY config.toml /etc/podsync/config.toml
 
-# Ustaw katalog roboczy
-WORKDIR /app
-
-# Domyślna komenda startowa
-CMD ["podsync", "--config", "/app/config.toml"]
+CMD ["podsync", "--config", "/etc/podsync/config.toml"]
