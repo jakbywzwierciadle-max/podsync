@@ -16,4 +16,7 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
   format = "audio"
   quality = "high"
-
+  update_period = "6h"
+  max_episodes = 50
+  download_videos = false
+  clean = true
