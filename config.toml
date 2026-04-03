@@ -1,6 +1,6 @@
 [server]
+hostname = "podsync-production.up.railway.app"
 port = 8080
-public_url = "https://podsync-production.up.railway.app"
 
 [storage]
   [storage.local]
