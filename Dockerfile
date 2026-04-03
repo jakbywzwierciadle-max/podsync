@@ -26,10 +26,9 @@ RUN apk add --no-cache \
     ca-certificates \
     ffmpeg \
     python3 \
+    py3-pip \
     tzdata \
-    wget \
-    && wget -O /usr/local/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux \
-    && chmod a+rx /usr/local/bin/yt-dlp \
+    && pip3 install --no-cache-dir yt-dlp \
     && ln -s /usr/local/bin/yt-dlp /usr/local/bin/youtube-dl
 
 COPY --from=builder /build/podsync /usr/local/bin/podsync
