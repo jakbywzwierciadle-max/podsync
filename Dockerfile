@@ -1,7 +1,13 @@
 FROM ghcr.io/mxpv/podsync:latest
 
-RUN mkdir -p /config
+# Tworzymy katalog, którego Railway nie nadpisuje
+RUN mkdir -p /opt/podsync
 
-COPY config.toml /config/config.toml
+# Kopiujemy config do bezpiecznego miejsca
+COPY config.toml /opt/podsync/config.toml
 
-CMD ["podsync", "--config", "/config/config.toml"]
+# Ustawiamy katalog roboczy
+WORKDIR /opt/podsync
+
+# Uruchamiamy Podsync z pełną ścieżką
+CMD ["podsync", "--config", "/opt/podsync/config.toml"]
