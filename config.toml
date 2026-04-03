@@ -32,7 +32,7 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   cleanup = "old"
   filename_template = "{published_at} - {title}.{ext}"
 
-  [feeds.ID1.match]
+  [feeds.ID2.match]
   min_duration = "3m"
 
   [feeds.ID3]
