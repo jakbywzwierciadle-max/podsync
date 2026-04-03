@@ -29,8 +29,10 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   max_episodes = 10
   download_videos = false
   cleanup = "old"
-  min_duration = "3m"
   filename_template = "{published_at} - {title}.{ext}"
+
+  [feeds.ID1.match]
+  min_duration = "3m"
 
   [feeds.ID3]
   url = "https://www.youtube.com/channel/UCVJzjegbx4UcuYROK7m0KVQ"
