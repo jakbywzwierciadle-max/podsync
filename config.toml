@@ -18,7 +18,7 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   update_period = "1h"
   max_episodes = 2
   download_videos = false
-  cleanup = "true"
+  cleanup = true
   filename_template = "{published_at} - {title}.{ext}"
 
   [feeds.ID2]
@@ -29,7 +29,7 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   update_period = "4h"
   max_episodes = 2
   download_videos = false
-  cleanup = "true"
+  cleanup = true
   min_duration = "3m"
   filename_template = "{published_at} - {title}.{ext}"
 
@@ -41,7 +41,7 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   update_period = "4h"
   max_episodes = 2
   download_videos = false
-  cleanup = "true"
+  cleanup = true
   min_duration = "3m"
   filename_template = "{published_at} - {title}.{ext}"
 
