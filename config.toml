@@ -14,7 +14,7 @@ youtube = "AIzaSyDx_xfpogeQFJDEGA_jVAMmfyn8mntZo1M"
   url = "https://www.youtube.com/channel/UCO6_hwMtQZ0SLElfDMaqJGQ"
   format = "bestaudio[language=pl]/bestaudio/best"
   title = "Spiżarnia wiary"
-  quality = "low"
+  quality = "best"
   update_period = "1h"
   max_episodes = 2
   download_videos = false
